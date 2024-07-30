@@ -12,6 +12,10 @@ public class BoardController {
     @Autowired
     private BoardService boardservice;
 
+    @GetMapping("/")
+    public String Helloword(){
+        return "Hello World";
+    }
     @PostMapping("/board/write")
     public String boardWriteDo(Board board){
         boardservice.write(board);
