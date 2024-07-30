@@ -69,7 +69,7 @@ jobs:
           path: k8s
 
       - name: Change manifest
-        run: sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "k8s/application.yml"
+        run: sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "application.yml"
           
       - name: Commit files
         run: |
