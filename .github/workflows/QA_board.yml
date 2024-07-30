@@ -3,7 +3,7 @@ name: Build and Push Q&A Board service
 on:
   push:
     paths:
-        - 'Q&A_board_service/**'
+        - 'QA_board_service/**'
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
                 restore-keys: |
                     ${{ runner.os }}-gradle-
             - name: Grant execute permission for gradlew
-              run: chmod +x ./Q&A_board_service/gradlew
+              run: chmod +x ./QA_board_service/gradlew
               shell: bash
                       
             - name: Build with Gradle
@@ -47,7 +47,7 @@ jobs:
             - name: Build and push Docker image
               uses: docker/build-push-action@v2
               with:
-                context: ./Q&A_board_service
+                context: ./QA_board_service
                 push: true
                 tags: ${{ secrets.DOCKERHUB_USERNAME }}/chatbot:${{github.run_number}}
                 platforms: linux/amd64,linux/arm64
