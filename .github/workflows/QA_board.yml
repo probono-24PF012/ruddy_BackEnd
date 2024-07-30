@@ -67,7 +67,8 @@ jobs:
           repository: probono-24PF012/ruddy-Infra
           token: ${{ secrets.INFRA_PAT }}
           path: k8s
-
+      - name: List files for debugging
+        run: ls -R
       - name: Change manifest
         run: sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "k8s/application.yml"
           
