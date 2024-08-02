@@ -74,8 +74,7 @@ jobs:
         run: |
           cd ruddy-Infra
           cd k8s
-          ls
-          sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "k8s/application.yml"
+          sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "application.yml"
           git config --global user.email "matkimchi_@naver.com"
           git config --global user.name "kyounghoonJang"
           git add application.yml
