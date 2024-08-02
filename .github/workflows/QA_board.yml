@@ -61,26 +61,44 @@ jobs:
     env:
       TAG: ${{needs.build.outputs.TAG}}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Clone Repository B
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
         with:
-          repository: probono-24PF012/ruddy-Infra
-          token: ${{ secrets.INFRA_PAT }}
-          path: k8s
-      - name: List files for debugging
-        run: ls -R
-      - name: Change manifest
-        run: sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "k8s/k8s/application.yml"
-          
-      - name: Commit files
-        run: |
-          git commit -a -m "Add changes"
+          depth: 1
+          branch: 'main'
+          owner: 'probono-24PF012'
+          repository: 'ruddy-Infra'
+
       
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.INFRA_PAT }}
-          branch: main
+      - name: Access cloned repository content
+        run: |
+          cd ruddy-Infra
+          sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "k8s/k8s/application.yml"
+          git config --global user.email "matkimchi_@naver.com"
+          git config --global user.name "kyounghoonJang"
+          git add application.yml
+          git commit -m "Update application.yml"
+      
+      - name: Push to Reposiroty Ruddy Infra
+        run: |
+          cd ruddy-Infra
+          git remote set-url origin https://x-access-token:${{ secrets.INFRA_PAT }}@github.com/probono-24PF012/ruddy-Infra.git
+          git push 
+
+      # - name: List files for debugging
+      #   run: ls -R
+      # - name: Change manifest
+      #   run: sed -i "s|matkimchi/probono_qa_board:[^ ]|matkimchi/probono_qa_board:${{env.TAG}}|" "k8s/k8s/application.yml"
+          
+      # - name: Commit files
+      #   run: |
+      #     git commit -a -m "Add changes"
+      
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.INFRA_PAT }}
+      #     branch: main
       
       
           
