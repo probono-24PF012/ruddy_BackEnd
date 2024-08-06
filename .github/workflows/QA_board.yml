@@ -55,7 +55,7 @@ jobs:
         run: |
           git config --global user.email "matkimchi_@naver.com"
           git config --global user.name "kyounghoonJang"
-          git add /Swagger/docs/QA-board-service.json
+          git add Swagger/docs/QA-board-service.json
           git commit -m "Update QA-board-service.json"
           git push origin main
       
