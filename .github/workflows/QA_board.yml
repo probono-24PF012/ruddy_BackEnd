@@ -50,7 +50,7 @@ jobs:
           cp QA_board_service/build/api-spec/openapi3.json Swagger/docs/QA-board-servicessss.json
           git config --global user.email "matkimchi_@naver.com"
           git config --global user.name "kyounghoonJang"
-          git add Swagger/docs/QA-board-service.json
+          git add Swagger/docs/QA-board-servicessss.json
           git commit -m "Update QA-board-service.json"
           git push origin main
         shell: bash
