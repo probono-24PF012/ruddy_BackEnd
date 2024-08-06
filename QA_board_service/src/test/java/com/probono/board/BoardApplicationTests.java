@@ -26,6 +26,8 @@ import static org.springframework.restdocs.headers.HeaderDocumentation.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.formParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 
 @ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureMockMvc
@@ -86,6 +88,28 @@ class BoardApplicationTests {
 						requestFields(
 								fieldWithPath("title").description("title of post"),
 								fieldWithPath("content").description("content of post")
+						)
+				));
+	}
+	@Test
+	@DisplayName("게시글 삭제")
+	void delete() throws Exception{
+		String id = "1";
+		this.mockMvc.perform(RestDocumentationRequestBuilders.post("/qa-board/delete").header("Authorization", jwtToken)
+				.param("id", "1")
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andDo(MockMvcResultHandlers.print())
+				.andDo(document("delete",
+						resourceDetails().description("게시물 삭제"),
+						preprocessRequest(prettyPrint()),
+						preprocessResponse(prettyPrint()),
+						requestHeaders(
+
+								headerWithName("AUTHORIZATION").description("Bearer token for authentication")
+						),
+						formParameters(
+								parameterWithName("id").description("id of post")
 						)
 				));
 	}
