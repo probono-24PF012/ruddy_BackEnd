@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+[].id+`
+|`+Number+`
+|id
+
+|`+[].title+`
+|`+String+`
+|title of post
+
+|`+[].content+`
+|`+String+`
+|content of post
+
+|`+[].username+`
+|`+String+`
+|username of post
+
+|===

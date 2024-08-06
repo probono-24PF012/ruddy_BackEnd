@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+GET /qa-board/getmyboard HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc
+Accept: application/json
+Host: localhost:8080
+
+----

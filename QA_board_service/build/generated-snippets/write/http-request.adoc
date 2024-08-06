@@ -1,0 +1,14 @@
+[source,http,options="nowrap"]
+----
+POST /qa-board/write HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc
+Accept: application/json
+Content-Length: 58
+Host: localhost:8080
+
+{
+  "title" : "Test Title",
+  "content" : "Test Content"
+}
+----

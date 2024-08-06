@@ -1,0 +1,59 @@
+{
+  "operationId" : "write",
+  "summary" : "게시물 작성",
+  "description" : "게시물 작성",
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/qa-board/write",
+    "method" : "POST",
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ {
+      "name" : "ACCEPT",
+      "attributes" : { },
+      "description" : "Accept header",
+      "type" : "STRING",
+      "optional" : false,
+      "example" : "application/json",
+      "default" : null
+    }, {
+      "name" : "AUTHORIZATION",
+      "attributes" : { },
+      "description" : "Bearer token for authentication",
+      "type" : "STRING",
+      "optional" : false,
+      "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc",
+      "default" : null
+    } ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ {
+      "attributes" : { },
+      "description" : "title of post",
+      "ignored" : false,
+      "path" : "title",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "content of post",
+      "ignored" : false,
+      "path" : "content",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{\n  \"title\" : \"Test Title\",\n  \"content\" : \"Test Content\"\n}",
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : null,
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ ],
+    "example" : null
+  },
+  "tags" : [ "qa-board" ]
+}

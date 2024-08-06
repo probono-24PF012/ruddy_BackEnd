@@ -1,0 +1,73 @@
+{
+  "operationId" : "getPost",
+  "summary" : "게시물 조회",
+  "description" : "게시물 조회",
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/qa-board/getmyboard",
+    "method" : "GET",
+    "contentType" : null,
+    "schema" : null,
+    "headers" : [ {
+      "name" : "ACCEPT",
+      "attributes" : { },
+      "description" : "Accept header",
+      "type" : "STRING",
+      "optional" : false,
+      "example" : "application/json",
+      "default" : null
+    }, {
+      "name" : "AUTHORIZATION",
+      "attributes" : { },
+      "description" : "Bearer token for authentication",
+      "type" : "STRING",
+      "optional" : false,
+      "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc",
+      "default" : null
+    } ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ ],
+    "example" : null,
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ {
+      "attributes" : { },
+      "description" : "id",
+      "ignored" : false,
+      "path" : "[].id",
+      "type" : "NUMBER",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "title of post",
+      "ignored" : false,
+      "path" : "[].title",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "content of post",
+      "ignored" : false,
+      "path" : "[].content",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "username of post",
+      "ignored" : false,
+      "path" : "[].username",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "[ {\n  \"id\" : 2,\n  \"title\" : \"Updated Title\",\n  \"content\" : \"Updated Content\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 3,\n  \"title\" : \"adasd\",\n  \"content\" : \"sadasd\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 23,\n  \"title\" : \"qe\",\n  \"content\" : \"qqq\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 24,\n  \"title\" : \"qe\",\n  \"content\" : \"qqq\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 25,\n  \"title\" : \"qe\",\n  \"content\" : \"qqq\",\n  \"username\" : \"matkimchi\"\n} ]"
+  },
+  "tags" : [ "qa-board" ]
+}
