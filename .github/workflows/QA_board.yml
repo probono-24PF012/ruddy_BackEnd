@@ -43,21 +43,28 @@ jobs:
           ./gradlew openapi3
         shell: bash
       
-      - name: Copy file
-        run: |
-          ls
-          cp QA_board_service/build/api-spec/openapi3.json Swagger/docs/QA-board-service.json
-        shell: bash
-
-      - name: Commit change
+      - name: Copy file And Commit
         env: 
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: |
+          ls
+          cp QA_board_service/build/api-spec/openapi3.json Swagger/docs/QA-board-service.json
           git config --global user.email "matkimchi_@naver.com"
           git config --global user.name "kyounghoonJang"
           git add /Swagger/docs/QA-board-service.json
           git commit -m "Update QA-board-service.json"
           git push origin main
+        shell: bash
+
+      # - name: Commit change
+      #   env: 
+      #     GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+      #   run: |
+      #     git config --global user.email "matkimchi_@naver.com"
+      #     git config --global user.name "kyounghoonJang"
+      #     git add /Swagger/docs/QA-board-service.json
+      #     git commit -m "Update QA-board-service.json"
+      #     git push origin main
       
       - name: Set up Docker buildx
         uses: docker/setup-buildx-action@v1
