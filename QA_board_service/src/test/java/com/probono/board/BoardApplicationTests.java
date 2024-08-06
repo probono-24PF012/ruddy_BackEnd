@@ -25,8 +25,7 @@ import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.resour
 import static org.springframework.restdocs.headers.HeaderDocumentation.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 
 @ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureMockMvc
@@ -40,11 +39,11 @@ class BoardApplicationTests {
 				.apply(documentationConfiguration(restDocumentationContextProvider))
 				.build();
 	}
+	String jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc";
 	@Test
 	@WithMockUser(username = "matkimchi", roles = "USER")
 	@DisplayName("게시글 가져오기")
 	void getPost() throws Exception{
-		String jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc";
 		this.mockMvc.perform(RestDocumentationRequestBuilders.get("/qa-board/getmyboard").header("Authorization", jwtToken)
 						.accept(MediaType.APPLICATION_JSON))// get("post")검사
 				.andExpect(MockMvcResultMatchers.status().isOk())	// request 요청시의 Http Status 검증
@@ -65,5 +64,31 @@ class BoardApplicationTests {
 						)
 				));
 	}
+	@Test
+	@WithMockUser(username = "matkimchi", roles = "USER")
+	@DisplayName("게시글 작성")
+	void write() throws Exception {
+		String requestBody = "{ \"title\": \"Test Title\", \"content\": \"Test Content\" }";
+		this.mockMvc.perform(RestDocumentationRequestBuilders.post("/qa-board/write").header("Authorization", jwtToken)
+				.accept(MediaType.APPLICATION_JSON)
+				.content(requestBody)
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andDo(MockMvcResultHandlers.print())
+				.andDo(document("write",
+						resourceDetails().description("게시물 작성"),
+						preprocessRequest(prettyPrint()),
+						preprocessResponse(prettyPrint()),
+						requestHeaders(
+								headerWithName("ACCEPT").description("Accept header"),
+								headerWithName("AUTHORIZATION").description("Bearer token for authentication")
+						),
+						requestFields(
+								fieldWithPath("title").description("title of post"),
+								fieldWithPath("content").description("content of post")
+						)
+				));
+	}
+
 }
 
