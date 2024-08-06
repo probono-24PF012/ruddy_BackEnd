@@ -45,6 +45,7 @@ jobs:
       
       - name: Copy file
         run: |
+          ls
           cp QA_board_service/build/api-spec/openapi3.json /Swagger/docs/QA-board-service.json
         shell: bash
 
