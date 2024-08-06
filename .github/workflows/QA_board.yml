@@ -35,13 +35,18 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build
         shell: bash
+
       - name: build openapi3
         run: |
           cd QA_board_service
           chmod +x ./gradlew
           ./gradlew openapi3
         shell: bash
-        
+      
+      - name: Copy file
+        run: |
+          cp QA_board_service/build/api-spec/openapi3.json /Swagger/docs/QA-board-service.json
+        shell: bash
       
       - name: Set up Docker buildx
         uses: docker/setup-buildx-action@v1
