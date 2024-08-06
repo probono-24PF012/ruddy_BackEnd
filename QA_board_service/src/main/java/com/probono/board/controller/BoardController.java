@@ -15,10 +15,10 @@ public class BoardController {
     @Autowired
     private BoardService boardservice;
 
-    @GetMapping("/")
-    public String Helloword(){
-        return "Hello World";
-    }
+//    @GetMapping("/")
+//    public String Helloword(){
+//        return "Hello World";
+//    }
     @PostMapping("/qa-board/write")
     public String boardWriteDo(@RequestBody BoardCreateRequest request){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
