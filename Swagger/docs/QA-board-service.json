@@ -9,8 +9,139 @@
     "url" : "http://localhost:8090"
   } ],
   "tags" : [ ],
-  "paths" : { },
+  "paths" : {
+    "/qa-board/getmyboard" : {
+      "get" : {
+        "tags" : [ "qa-board" ],
+        "summary" : "게시물 조회",
+        "description" : "게시물 조회",
+        "operationId" : "getPost",
+        "parameters" : [ {
+          "name" : "ACCEPT",
+          "in" : "header",
+          "description" : "Accept header",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "application/json"
+        }, {
+          "name" : "AUTHORIZATION",
+          "in" : "header",
+          "description" : "Bearer token for authentication",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/qa-board-getmyboard-577183546"
+                },
+                "examples" : {
+                  "getPost" : {
+                    "value" : "[ {\n  \"id\" : 2,\n  \"title\" : \"Updated Title\",\n  \"content\" : \"Updated Content\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 3,\n  \"title\" : \"adasd\",\n  \"content\" : \"sadasd\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 23,\n  \"title\" : \"qe\",\n  \"content\" : \"qqq\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 24,\n  \"title\" : \"qe\",\n  \"content\" : \"qqq\",\n  \"username\" : \"matkimchi\"\n}, {\n  \"id\" : 25,\n  \"title\" : \"qe\",\n  \"content\" : \"qqq\",\n  \"username\" : \"matkimchi\"\n} ]"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/qa-board/write" : {
+      "post" : {
+        "tags" : [ "qa-board" ],
+        "summary" : "게시물 작성",
+        "description" : "게시물 작성",
+        "operationId" : "write",
+        "parameters" : [ {
+          "name" : "ACCEPT",
+          "in" : "header",
+          "description" : "Accept header",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "application/json"
+        }, {
+          "name" : "AUTHORIZATION",
+          "in" : "header",
+          "description" : "Bearer token for authentication",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/qa-board-write-282892263"
+              },
+              "examples" : {
+                "write" : {
+                  "value" : "{\n  \"title\" : \"Test Title\",\n  \"content\" : \"Test Content\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200"
+          }
+        }
+      }
+    }
+  },
   "components" : {
-    "schemas" : { }
+    "schemas" : {
+      "qa-board-write-282892263" : {
+        "required" : [ "content", "title" ],
+        "type" : "object",
+        "properties" : {
+          "title" : {
+            "type" : "string",
+            "description" : "title of post"
+          },
+          "content" : {
+            "type" : "string",
+            "description" : "content of post"
+          }
+        }
+      },
+      "qa-board-getmyboard-577183546" : {
+        "type" : "array",
+        "items" : {
+          "required" : [ "content", "id", "title", "username" ],
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "number",
+              "description" : "id"
+            },
+            "title" : {
+              "type" : "string",
+              "description" : "title of post"
+            },
+            "content" : {
+              "type" : "string",
+              "description" : "content of post"
+            },
+            "username" : {
+              "type" : "string",
+              "description" : "username of post"
+            }
+          }
+        }
+      }
+    }
   }
 }
