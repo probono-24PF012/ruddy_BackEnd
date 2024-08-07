@@ -1,0 +1,45 @@
+{
+  "operationId" : "delete",
+  "summary" : "게시물 삭제",
+  "description" : "게시물 삭제",
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/qa-board/delete",
+    "method" : "POST",
+    "contentType" : "application/x-www-form-urlencoded",
+    "schema" : null,
+    "headers" : [ {
+      "name" : "AUTHORIZATION",
+      "attributes" : { },
+      "description" : "Bearer token for authentication",
+      "type" : "STRING",
+      "optional" : false,
+      "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc",
+      "default" : null
+    } ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ {
+      "name" : "id",
+      "attributes" : { },
+      "description" : "id of post",
+      "ignored" : false,
+      "type" : "STRING",
+      "optional" : false,
+      "default" : null
+    } ],
+    "requestFields" : [ ],
+    "example" : "id=1",
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : null,
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ ],
+    "example" : null
+  },
+  "tags" : [ "qa-board" ]
+}

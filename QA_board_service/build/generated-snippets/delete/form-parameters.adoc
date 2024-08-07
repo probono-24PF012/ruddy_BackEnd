@@ -1,0 +1,7 @@
+|===
+|Parameter|Description
+
+|`+id+`
+|id of post
+
+|===
