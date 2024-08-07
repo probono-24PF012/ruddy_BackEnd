@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/qa-board/update/3' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc' \
+    -H 'Accept: application/json' \
+    -d '{
+  "title" : "Update Title",
+  "content" : "Update Content"
+}'
+----

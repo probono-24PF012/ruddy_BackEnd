@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+title+`
+|`+String+`
+|The title of the board
+
+|`+content+`
+|`+String+`
+|The content of the board
+
+|===

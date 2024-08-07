@@ -1,0 +1,8 @@
+.+/qa-board/update/{id}+
+|===
+|Parameter|Description
+
+|`+id+`
+|The ID of the board
+
+|===

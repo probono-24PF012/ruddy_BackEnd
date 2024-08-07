@@ -1,0 +1,10 @@
+|===
+|Name|Description
+
+|`+Accept+`
+|Accept header
+
+|`+Authorization+`
+|Bearer token for authentication
+
+|===

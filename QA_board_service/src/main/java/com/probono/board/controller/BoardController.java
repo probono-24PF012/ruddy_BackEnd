@@ -45,6 +45,9 @@ public class BoardController {
     @PostMapping("/qa-board/update/{id}")
     public String boardUpdate(@PathVariable("id") Integer id, @RequestBody Board board){
         board.setId(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        board.setUsername(username);
         boardservice.write(board);
         return "";
     }

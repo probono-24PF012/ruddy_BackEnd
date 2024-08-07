@@ -1,7 +1,11 @@
 package com.probono.board;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.probono.board.dto.BoardCreateRequest;
+import com.probono.board.entity.Board;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,8 +30,9 @@ import static org.springframework.restdocs.headers.HeaderDocumentation.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.formParameters;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureMockMvc
@@ -48,8 +53,8 @@ class BoardApplicationTests {
 	void getPost() throws Exception{
 		this.mockMvc.perform(RestDocumentationRequestBuilders.get("/qa-board/getmyboard").header("Authorization", jwtToken)
 						.accept(MediaType.APPLICATION_JSON))// get("post")검사
-				.andExpect(MockMvcResultMatchers.status().isOk())	// request 요청시의 Http Status 검증
-				.andDo(MockMvcResultHandlers.print())	// 로그로 request, response 확인 가능
+				.andExpect(status().isOk())	// request 요청시의 Http Status 검증
+				.andDo(print())	// 로그로 request, response 확인 가능
 				.andDo(document("getPost",
 						resourceDetails().description("게시물 조회"),
 						preprocessRequest(prettyPrint()),
@@ -75,8 +80,8 @@ class BoardApplicationTests {
 				.accept(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status().isOk())
+				.andDo(print())
 				.andDo(document("write",
 						resourceDetails().description("게시물 작성"),
 						preprocessRequest(prettyPrint()),
@@ -98,8 +103,8 @@ class BoardApplicationTests {
 		this.mockMvc.perform(RestDocumentationRequestBuilders.post("/qa-board/delete").header("Authorization", jwtToken)
 				.param("id", "1")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED))
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status().isOk())
+				.andDo(print())
 				.andDo(document("delete",
 						resourceDetails().description("게시물 삭제"),
 						preprocessRequest(prettyPrint()),
@@ -113,6 +118,42 @@ class BoardApplicationTests {
 						)
 				));
 	}
+	@Test
+	@DisplayName("게시글 수정")
+	@WithMockUser(username = "matkimchi", roles = "USER")
+	void update() throws Exception {
+		// Arrange: Create a Board object without id and username fields
+		BoardCreateRequest boardCreateRequest = new BoardCreateRequest();
+		boardCreateRequest.setTitle("Update Title");
+		boardCreateRequest.setContent("Update Content");
+		ObjectMapper objectMapper = new ObjectMapper();
+		// Convert Board object to JSON
+		String boardJson = objectMapper.writeValueAsString(boardCreateRequest);
 
+		// Act & Assert: Send a POST request to the controller with the JSON data
+		mockMvc.perform(RestDocumentationRequestBuilders.post("/qa-board/update/{id}", 3)
+						.header("Authorization", jwtToken)
+						.contentType(MediaType.APPLICATION_JSON_VALUE)
+						.content(boardJson)
+						.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andDo(print())
+				.andDo(document("update",
+						resourceDetails().description("게시물 수정"),
+						preprocessRequest(prettyPrint()),
+						preprocessResponse(prettyPrint()),
+						pathParameters(
+								parameterWithName("id").description("The ID of the board")
+						),
+						requestHeaders(
+								headerWithName("Accept").description("Accept header"),
+								headerWithName("Authorization").description("Bearer token for authentication")
+						),
+						requestFields(
+								fieldWithPath("title").description("The title of the board"),
+								fieldWithPath("content").description("The content of the board")
+						)
+				));
+	}
 }
 
