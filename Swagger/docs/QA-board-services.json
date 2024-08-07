@@ -136,10 +136,78 @@
           }
         }
       }
+    },
+    "/qa-board/update/{id}" : {
+      "post" : {
+        "tags" : [ "qa-board" ],
+        "summary" : "게시물 수정",
+        "description" : "게시물 수정",
+        "operationId" : "update",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The ID of the board",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accept header",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "application/json"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "Bearer token for authentication",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/qa-board-update-id1929861759"
+              },
+              "examples" : {
+                "update" : {
+                  "value" : "{\n  \"title\" : \"Update Title\",\n  \"content\" : \"Update Content\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200"
+          }
+        }
+      }
     }
   },
   "components" : {
     "schemas" : {
+      "qa-board-update-id1929861759" : {
+        "required" : [ "content", "title" ],
+        "type" : "object",
+        "properties" : {
+          "title" : {
+            "type" : "string",
+            "description" : "The title of the board"
+          },
+          "content" : {
+            "type" : "string",
+            "description" : "The content of the board"
+          }
+        }
+      },
       "qa-board-write-282892263" : {
         "required" : [ "content", "title" ],
         "type" : "object",
