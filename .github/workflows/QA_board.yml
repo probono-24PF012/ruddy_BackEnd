@@ -51,7 +51,7 @@ jobs:
           chmod +x ./gradlew
           ./gradlew openapi3
           cd ..
-          cp QA_board_service/build/api-spec/openapi3.json Swagger/docs/QA-board-servicessss.json
+          mv QA_board_service/build/api-spec/openapi3.json Swagger/docs/QA-board-servicessss.json
           git config --global user.email "matkimchi_@naver.com"
           git config --global user.name "kyounghoonJang"
           git add Swagger/docs/QA-board-servicessss.json
