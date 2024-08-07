@@ -10,6 +10,43 @@
   } ],
   "tags" : [ ],
   "paths" : {
+    "/qa-board/delete" : {
+      "post" : {
+        "tags" : [ "qa-board" ],
+        "summary" : "게시물 삭제",
+        "description" : "게시물 삭제",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "AUTHORIZATION",
+          "in" : "header",
+          "description" : "Bearer token for authentication",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJVU0VSIl19.TXam8pxYmhfzIZwslJmt89EusXjJnLdSt9VyK3gqHrc"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/qa-board-delete621543623"
+              },
+              "examples" : {
+                "delete" : {
+                  "value" : "id=1"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200"
+          }
+        }
+      }
+    },
     "/qa-board/getmyboard" : {
       "get" : {
         "tags" : [ "qa-board" ],
@@ -114,6 +151,16 @@
           "content" : {
             "type" : "string",
             "description" : "content of post"
+          }
+        }
+      },
+      "qa-board-delete621543623" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "id of post"
           }
         }
       },
