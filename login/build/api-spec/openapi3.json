@@ -1,0 +1,176 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "rest docs + swagger UI",
+    "description" : "My API description",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://localhost:8080"
+  } ],
+  "tags" : [ ],
+  "paths" : {
+    "/members/sign-in" : {
+      "post" : {
+        "tags" : [ "members" ],
+        "operationId" : "members/sign-in",
+        "requestBody" : {
+          "content" : {
+            "application/json;charset=UTF-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/members-sign-in-817163123"
+              },
+              "examples" : {
+                "members/sign-in" : {
+                  "value" : "{ \"username\": \"user\", \"password\": \"password\" }"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/members-sign-in-1114919941"
+                },
+                "examples" : {
+                  "members/sign-in" : {
+                    "value" : "{\"grantType\":\"Bearer\",\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjMwMTg5OTR9.WQqwpOcAvAs1Zeh5fiq5MEFcwTFORxi7_7mKgW3Z0Z0\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM3OTY1OTR9.osReiwbU-gCEBgriXLaYPcpEdFHAdLp8gQWzPGDoNRY\"}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members/sign-up" : {
+      "post" : {
+        "tags" : [ "members" ],
+        "operationId" : "members/sign-up",
+        "requestBody" : {
+          "content" : {
+            "application/json;charset=UTF-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/members-sign-up-575012675"
+              },
+              "examples" : {
+                "members/sign-up" : {
+                  "value" : "{ \"username\": \"user\", \"password\": \"password\", \"nickname\": \"nick\", \"schoolCode\": \"sejong\", \"nationality\": \"Korean\" }"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/members-sign-up-1733182680"
+                },
+                "examples" : {
+                  "members/sign-up" : {
+                    "value" : "{\"id\":1,\"username\":\"user\",\"nickname\":\"nick\",\"schoolCode\":\"sejong\",\"nationality\":\"Korean\"}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "members-sign-in-1114919941" : {
+        "required" : [ "accessToken", "grantType", "refreshToken" ],
+        "type" : "object",
+        "properties" : {
+          "accessToken" : {
+            "type" : "string",
+            "description" : "The access token"
+          },
+          "grantType" : {
+            "type" : "string",
+            "description" : "The grant type"
+          },
+          "refreshToken" : {
+            "type" : "string",
+            "description" : "The refresh token"
+          }
+        }
+      },
+      "members-sign-in-817163123" : {
+        "required" : [ "password", "username" ],
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string",
+            "description" : "The user's password"
+          },
+          "username" : {
+            "type" : "string",
+            "description" : "The user's username"
+          }
+        }
+      },
+      "members-sign-up-575012675" : {
+        "required" : [ "nationality", "nickname", "password", "schoolCode", "username" ],
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string",
+            "description" : "The user's password"
+          },
+          "nationality" : {
+            "type" : "string",
+            "description" : "The user's nationality"
+          },
+          "nickname" : {
+            "type" : "string",
+            "description" : "The user's nickname"
+          },
+          "schoolCode" : {
+            "type" : "string",
+            "description" : "The user's school code"
+          },
+          "username" : {
+            "type" : "string",
+            "description" : "The user's username"
+          }
+        }
+      },
+      "members-sign-up-1733182680" : {
+        "required" : [ "id", "nationality", "nickname", "schoolCode", "username" ],
+        "type" : "object",
+        "properties" : {
+          "nationality" : {
+            "type" : "string",
+            "description" : "The user's nationality"
+          },
+          "nickname" : {
+            "type" : "string",
+            "description" : "The user's nickname"
+          },
+          "id" : {
+            "type" : "number",
+            "description" : "사용자 고유 ID"
+          },
+          "schoolCode" : {
+            "type" : "string",
+            "description" : "The user's school code"
+          },
+          "username" : {
+            "type" : "string",
+            "description" : "The user's username"
+          }
+        }
+      }
+    }
+  }
+}

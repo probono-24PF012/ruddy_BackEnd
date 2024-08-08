@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/members/sign-in?_csrf=JS1JegIY-fY5-uDIJGJCXVPZtPECdtg54-6i8Gla5kZG0CyuEhRwS2EhmJMUm9GuQU92PzDsmZBgQr0U2tzBlgpog3904B6e' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{ "username": "user", "password": "password" }'
+----

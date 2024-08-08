@@ -1,0 +1,4 @@
+[source,json,options="nowrap"]
+----
+{ "username": "user", "password": "password", "nickname": "nick", "schoolCode": "sejong", "nationality": "Korean" }
+----

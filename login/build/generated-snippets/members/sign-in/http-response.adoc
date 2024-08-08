@@ -1,0 +1,17 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 307
+
+{"grantType":"Bearer","accessToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjMwMTg5OTR9.WQqwpOcAvAs1Zeh5fiq5MEFcwTFORxi7_7mKgW3Z0Z0","refreshToken":"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM3OTY1OTR9.osReiwbU-gCEBgriXLaYPcpEdFHAdLp8gQWzPGDoNRY"}
+----

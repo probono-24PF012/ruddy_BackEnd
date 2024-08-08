@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ echo '{ "username": "user", "password": "password", "nickname": "nick", "schoolCode": "sejong", "nationality": "Korean" }' | http POST 'http://localhost:8080/members/sign-up' \
+    'Content-Type:application/json;charset=UTF-8'
+----

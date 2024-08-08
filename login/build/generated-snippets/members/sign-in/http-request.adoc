@@ -1,0 +1,9 @@
+[source,http,options="nowrap"]
+----
+POST /members/sign-in?_csrf=JS1JegIY-fY5-uDIJGJCXVPZtPECdtg54-6i8Gla5kZG0CyuEhRwS2EhmJMUm9GuQU92PzDsmZBgQr0U2tzBlgpog3904B6e HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 46
+Host: localhost:8080
+
+{ "username": "user", "password": "password" }
+----

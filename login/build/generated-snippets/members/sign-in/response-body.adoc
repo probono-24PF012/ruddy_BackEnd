@@ -1,0 +1,4 @@
+[source,json,options="nowrap"]
+----
+{"grantType":"Bearer","accessToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjMwMTg5OTR9.WQqwpOcAvAs1Zeh5fiq5MEFcwTFORxi7_7mKgW3Z0Z0","refreshToken":"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM3OTY1OTR9.osReiwbU-gCEBgriXLaYPcpEdFHAdLp8gQWzPGDoNRY"}
+----

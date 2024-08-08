@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+username+`
+|`+String+`
+|The user's username
+
+|`+password+`
+|`+String+`
+|The user's password
+
+|`+nickname+`
+|`+String+`
+|The user's nickname
+
+|`+schoolCode+`
+|`+String+`
+|The user's school code
+
+|`+nationality+`
+|`+String+`
+|The user's nationality
+
+|===

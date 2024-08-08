@@ -1,0 +1,64 @@
+{
+  "operationId" : "members/sign-in",
+  "summary" : null,
+  "description" : null,
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/members/sign-in",
+    "method" : "POST",
+    "contentType" : "application/json;charset=UTF-8",
+    "schema" : null,
+    "headers" : [ ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ {
+      "attributes" : { },
+      "description" : "The user's username",
+      "ignored" : false,
+      "path" : "username",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's password",
+      "ignored" : false,
+      "path" : "password",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{ \"username\": \"user\", \"password\": \"password\" }",
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ {
+      "attributes" : { },
+      "description" : "The grant type",
+      "ignored" : false,
+      "path" : "grantType",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The access token",
+      "ignored" : false,
+      "path" : "accessToken",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The refresh token",
+      "ignored" : false,
+      "path" : "refreshToken",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{\"grantType\":\"Bearer\",\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjMwMTg5OTR9.WQqwpOcAvAs1Zeh5fiq5MEFcwTFORxi7_7mKgW3Z0Z0\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM3OTY1OTR9.osReiwbU-gCEBgriXLaYPcpEdFHAdLp8gQWzPGDoNRY\"}"
+  },
+  "tags" : [ "members" ]
+}

@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+grantType+`
+|`+String+`
+|The grant type
+
+|`+accessToken+`
+|`+String+`
+|The access token
+
+|`+refreshToken+`
+|`+String+`
+|The refresh token
+
+|===

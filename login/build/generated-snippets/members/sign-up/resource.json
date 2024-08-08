@@ -1,0 +1,99 @@
+{
+  "operationId" : "members/sign-up",
+  "summary" : null,
+  "description" : null,
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/members/sign-up",
+    "method" : "POST",
+    "contentType" : "application/json;charset=UTF-8",
+    "schema" : null,
+    "headers" : [ ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ {
+      "attributes" : { },
+      "description" : "The user's username",
+      "ignored" : false,
+      "path" : "username",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's password",
+      "ignored" : false,
+      "path" : "password",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's nickname",
+      "ignored" : false,
+      "path" : "nickname",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's school code",
+      "ignored" : false,
+      "path" : "schoolCode",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's nationality",
+      "ignored" : false,
+      "path" : "nationality",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{ \"username\": \"user\", \"password\": \"password\", \"nickname\": \"nick\", \"schoolCode\": \"sejong\", \"nationality\": \"Korean\" }",
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ {
+      "attributes" : { },
+      "description" : "사용자 고유 ID",
+      "ignored" : false,
+      "path" : "id",
+      "type" : "NUMBER",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's username",
+      "ignored" : false,
+      "path" : "username",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's nickname",
+      "ignored" : false,
+      "path" : "nickname",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's school code",
+      "ignored" : false,
+      "path" : "schoolCode",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The user's nationality",
+      "ignored" : false,
+      "path" : "nationality",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{\"id\":1,\"username\":\"user\",\"nickname\":\"nick\",\"schoolCode\":\"sejong\",\"nationality\":\"Korean\"}"
+  },
+  "tags" : [ "members" ]
+}

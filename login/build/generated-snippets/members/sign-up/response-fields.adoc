@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+Number+`
+|사용자 고유 ID
+
+|`+username+`
+|`+String+`
+|The user's username
+
+|`+nickname+`
+|`+String+`
+|The user's nickname
+
+|`+schoolCode+`
+|`+String+`
+|The user's school code
+
+|`+nationality+`
+|`+String+`
+|The user's nationality
+
+|===
