@@ -3,7 +3,7 @@ name: Build and Push Q&A Board service
 on:
   push:
     paths:
-        - 'Announcement_service/**'
+        - 'Annoucement_service/**'
 jobs:
   build:
     runs-on: ubuntu-latest
