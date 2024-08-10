@@ -12,7 +12,6 @@ load_dotenv(dotenv_path)
 print(os.getenv('GPT_KEY'))
 class gpt_func:
     def __init__(self):
-        print(os.getenv('GPT_KEY'))
         self.client = OpenAI(api_key=os.getenv('GPT_KEY'))
         self.chromadb_func=chromadb_func()
 
