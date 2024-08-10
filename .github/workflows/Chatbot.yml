@@ -40,9 +40,9 @@ jobs:
             pkill uvicorn
         
         - name: build And Copy file And Commit
+          continue-on-error: true
           env:
             GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-
           run: |
             git config --global user.email "matkimchi_@naver.com"
             git config --global user.name "kyounghoonJang"
