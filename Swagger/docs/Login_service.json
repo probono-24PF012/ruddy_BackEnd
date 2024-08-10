@@ -38,7 +38,7 @@
                 },
                 "examples" : {
                   "members/sign-in" : {
-                    "value" : "{\"grantType\":\"Bearer\",\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjMzOTk5MzJ9.462YCN7yY_Hb_fwqjxsxnfO_FBzZMXKxnmCBi143Lfg\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQxNzc1MzJ9.beOVR0Fb8SMlpOGPlL3jrgx13Efz7huwEluDuqfojDU\"}"
+                    "value" : "{\"grantType\":\"Bearer\",\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjM0MDAxNDh9.d6VyfjqGVB6pQtfQgNHMDCjWeMIjecebjYs2Hp3Z2Yk\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQxNzc3NDh9.y56yBrJjMK8Fv6vLcceqDrAgTzXvQ5YNd43edCVEezI\"}"
                   }
                 }
               }
