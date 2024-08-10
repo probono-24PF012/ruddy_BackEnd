@@ -1,0 +1,106 @@
+name: Build and Push Q&A Board service
+
+on:
+  push:
+    paths:
+        - 'Login_service/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      TAG: ${{github.run_number}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'    
+          distribution: 'temurin'
+    
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+              ${{ runner.os }}-gradle-
+                
+      - name: build project 
+        run: |
+          cd Login_service
+          chmod +x ./gradlew
+          ./gradlew build
+        shell: bash
+      
+      - name: build And Copy file And Commit
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        run: |
+          cd Login_service
+          chmod +x ./gradlew
+          ./gradlew openapi3
+          cd ..
+          mv Login_service/build/api-spec/openapi3.json Swagger/docs/Login_service.json
+          git config --global user.email "matkimchi_@naver.com"
+          git config --global user.name "kyounghoonJang"
+          git add Swagger/docs/Login_service.json
+          git commit -m "Update Login_service.json"
+          git push origin main
+        shell: bash
+
+      - name: Set up Docker buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to Dockerhub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./Login_service
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/probono_login:${{github.run_number}}
+          platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha, mode=max
+  push:
+    name: Push Manifests
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{needs.build.outputs.TAG}}
+    steps:
+      - name: Clone Repository B
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+        with:
+          depth: 1
+          branch: 'main'
+          owner: 'probono-24PF012'
+          repository: 'ruddy-Infra'
+
+      
+      - name: Access cloned repository content
+        run: |
+          cd ruddy-Infra
+          cd k8s
+          sed -i "s|matkimchi/probono_login:[^ ]|matkimchi/probono_login:${{env.TAG}}|" "application.yml"
+          git config --global user.email "matkimchi_@naver.com"
+          git config --global user.name "kyounghoonJang"
+          git add application.yml
+          git commit -m "Update application.yml"
+      
+      - name: Push to Reposiroty Ruddy Infra
+        run: |
+          cd ruddy-Infra
+          git remote set-url origin https://x-access-token:${{ secrets.INFRA_PAT }}@github.com/probono-24PF012/ruddy-Infra.git
+          git push 
+      
+      
+          
