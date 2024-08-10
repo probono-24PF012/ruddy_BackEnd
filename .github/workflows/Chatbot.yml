@@ -1,0 +1,97 @@
+name: Build and Push Chatbot service
+
+on:
+  push:
+    paths:
+        - 'Chatbot_service/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      TAG: ${{github.run_number}}
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Set up Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.10'
+
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r Chatbot_service/requirements.txt
+
+        - name: Make openapi json
+          run: |
+            cd Chatbot_service/app
+            uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+            sleep 5
+            curl http://localhost:8000/openapi.json > .../Swagger/docs/chatbot-service.json
+            pkill uvicorn
+        
+        - name: build And Copy file And Commit
+          env:
+            GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+          run: |
+            git config --global user.email "matkimchi_@naver.com"
+            git config --global user.name "kyounghoonJang"
+            git add Swagger/docs/chatbot-service.json
+            git commit -m "Update chatbot-service.json"
+            git push origin main
+
+        - name: Set up Docker buildx
+          uses: docker/setup-buildx-action@v1
+
+        - name: Login to Dockerhub
+          uses: docker/login-action@v2
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+        - name: Build and push Docker image
+          uses: docker/build-push-action@v2
+          with:
+            context: ./QA_board_service
+            push: true
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/probono_chatbot:${{github.run_number}}
+            platforms: linux/amd64,linux/arm64
+            cache-from: type=gha
+            cache-to: type=gha, mode=max
+
+  push:
+    name: Push Manifests
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{needs.build.outputs.TAG}}
+    steps:
+      - name: Clone Repository B
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+        with:
+          depth: 1
+          branch: 'main'
+          owner: 'probono-24PF012'
+          repository: 'ruddy-Infra'
+
+      
+      - name: Access cloned repository content
+        run: |
+          cd ruddy-Infra
+          cd k8s
+          sed -i "s|matkimchi/probono_chatbot:[^ ]|matkimchi/probono_chatbot:${{env.TAG}}|" "application.yml"
+          git config --global user.email "matkimchi_@naver.com"
+          git config --global user.name "kyounghoonJang"
+          git add application.yml
+          git commit -m "Update application.yml"
+      
+      - name: Push to Reposiroty Ruddy Infra
+        run: |
+          cd ruddy-Infra
+          git remote set-url origin https://x-access-token:${{ secrets.INFRA_PAT }}@github.com/probono-24PF012/ruddy-Infra.git
+          git push 
+      
+      
+          
