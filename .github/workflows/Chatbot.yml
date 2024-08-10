@@ -62,7 +62,7 @@ jobs:
         - name: Build and push Docker image
           uses: docker/build-push-action@v2
           with:
-            context: ./QA_board_service
+            context: ./Chatbot_service
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/probono_chatbot:${{github.run_number}}
             platforms: linux/amd64,linux/arm64
