@@ -1,0 +1,8 @@
+.+/announcement/detail/{id}+
+|===
+|Parameter|Description
+
+|`+id+`
+|The ID of the announcement to retrieve
+
+|===

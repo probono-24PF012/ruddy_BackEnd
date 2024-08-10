@@ -1,0 +1,64 @@
+{
+  "operationId" : "get-all-announcements",
+  "summary" : null,
+  "description" : null,
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/announcement/list",
+    "method" : "GET",
+    "contentType" : null,
+    "schema" : null,
+    "headers" : [ ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ ],
+    "example" : null,
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ {
+      "attributes" : { },
+      "description" : "The announcement ID",
+      "ignored" : false,
+      "path" : "[].id",
+      "type" : "NUMBER",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The announcement title",
+      "ignored" : false,
+      "path" : "[].title",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The announcement content",
+      "ignored" : false,
+      "path" : "[].content",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The announcement author",
+      "ignored" : false,
+      "path" : "[].author",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "The announcement date",
+      "ignored" : false,
+      "path" : "[].date",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "[ {\n  \"id\" : 1,\n  \"title\" : \"Title\",\n  \"content\" : \"Content\",\n  \"author\" : \"author\",\n  \"date\" : \"date\"\n} ]"
+  },
+  "tags" : [ "announcement" ]
+}

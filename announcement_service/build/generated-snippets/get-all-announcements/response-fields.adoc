@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+[].id+`
+|`+Number+`
+|The announcement ID
+
+|`+[].title+`
+|`+String+`
+|The announcement title
+
+|`+[].content+`
+|`+String+`
+|The announcement content
+
+|`+[].author+`
+|`+String+`
+|The announcement author
+
+|`+[].date+`
+|`+String+`
+|The announcement date
+
+|===

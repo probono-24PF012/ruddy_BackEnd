@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.probono.announcement_service.controller.AnnouncementControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-10T16:58:43" hostname="namjonghyeog-ui-MacBookPro.local" time="0.534">
+  <properties/>
+  <testcase name="getAnnouncementById()" classname="com.probono.announcement_service.controller.AnnouncementControllerTest" time="0.508"/>
+  <testcase name="getAllAnnouncements()" classname="com.probono.announcement_service.controller.AnnouncementControllerTest" time="0.025"/>
+  <system-out><![CDATA[2024-08-11T01:58:41.815+09:00  INFO 23651 --- [announcement_service] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.probono.announcement_service.controller.AnnouncementControllerTest]: AnnouncementControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-11T01:58:41.822+09:00  INFO 23651 --- [announcement_service] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.probono.announcement_service.AnnouncementServiceApplication for test class com.probono.announcement_service.controller.AnnouncementControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2024-08-11T01:58:41.839+09:00  INFO 23651 --- [announcement_service] [    Test worker] c.p.a.c.AnnouncementControllerTest       : Starting AnnouncementControllerTest using Java 17.0.10 with PID 23651 (started by namjjong99 in /Users/namjjong99/Desktop/WEB_Backend/announcement_service)
+2024-08-11T01:58:41.839+09:00  INFO 23651 --- [announcement_service] [    Test worker] c.p.a.c.AnnouncementControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2024-08-11T01:58:41.957+09:00  INFO 23651 --- [announcement_service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-11T01:58:41.965+09:00  INFO 23651 --- [announcement_service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 1 JPA repository interface.
+2024-08-11T01:58:42.281+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-11T01:58:42.287+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-11T01:58:42.304+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-11T01:58:42.306+09:00  INFO 23651 --- [announcement_service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-08-11T01:58:42.355+09:00  INFO 23651 --- [announcement_service] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12bb3666
+2024-08-11T01:58:42.355+09:00  INFO 23651 --- [announcement_service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-08-11T01:58:42.357+09:00  WARN 23651 --- [announcement_service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-11T01:58:42.408+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists announcement
+Hibernate: 
+    create table announcement (
+        id bigint not null auto_increment,
+        author varchar(255),
+        content varchar(255),
+        date varchar(255),
+        title varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+2024-08-11T01:58:42.448+09:00  INFO 23651 --- [announcement_service] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-11T01:58:42.629+09:00  WARN 23651 --- [announcement_service] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-11T01:58:42.681+09:00  WARN 23651 --- [announcement_service] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 95f108cf-b875-4a9f-a0be-a83a7d75d8f1
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-08-11T01:58:42.685+09:00  INFO 23651 --- [announcement_service] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-08-11T01:58:43.775+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-11T01:58:43.776+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-11T01:58:43.777+09:00  INFO 23651 --- [announcement_service] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-08-11T01:58:43.799+09:00  INFO 23651 --- [announcement_service] [    Test worker] c.p.a.c.AnnouncementControllerTest       : Started AnnouncementControllerTest in 1.975 seconds (process running for 5.72)
+end
+end
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

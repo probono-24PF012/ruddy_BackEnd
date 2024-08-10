@@ -1,0 +1,10 @@
+[source,json,options="nowrap"]
+----
+[ {
+  "id" : 1,
+  "title" : "Title",
+  "content" : "Content",
+  "author" : "author",
+  "date" : "date"
+} ]
+----
