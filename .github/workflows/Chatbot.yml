@@ -34,7 +34,7 @@ jobs:
         - name: Make openapi json
           run: |
             cd Chatbot_service/app
-            uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+            uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
             sleep 5
             curl http://localhost:8000/openapi.json > .../Swagger/docs/chatbot-service.json
             pkill uvicorn
