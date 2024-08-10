@@ -25,10 +25,6 @@ class Item_input(BaseModel):
     language: str
 
 
-@app.get('/')
-def test():
-    return {"Hello": "World"}
-
 @app.get("/chatbot/", summary="Root 테스트 API")
 def read_root():
     return {"Hello": "World"}
