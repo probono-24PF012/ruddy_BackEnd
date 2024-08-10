@@ -1,0 +1,128 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "rest docs + swagger UI",
+    "description" : "My API description",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://localhost:8080"
+  } ],
+  "tags" : [ ],
+  "paths" : {
+    "/announcement/list" : {
+      "get" : {
+        "tags" : [ "announcement" ],
+        "operationId" : "get-all-announcements",
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/announcement-list1985309299"
+                },
+                "examples" : {
+                  "get-all-announcements" : {
+                    "value" : "[ {\n  \"id\" : 1,\n  \"title\" : \"Title\",\n  \"content\" : \"Content\",\n  \"author\" : \"author\",\n  \"date\" : \"date\"\n} ]"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/announcement/detail/{id}" : {
+      "get" : {
+        "tags" : [ "announcement" ],
+        "operationId" : "get-announcement-by-id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The ID of the announcement to retrieve",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/announcement-detail-id-878993740"
+                },
+                "examples" : {
+                  "get-announcement-by-id" : {
+                    "value" : "{\n  \"id\" : 1,\n  \"title\" : \"Title\",\n  \"content\" : \"Content\",\n  \"author\" : \"author\",\n  \"date\" : \"date\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "announcement-list1985309299" : {
+        "type" : "array",
+        "items" : {
+          "required" : [ "author", "content", "date", "id", "title" ],
+          "type" : "object",
+          "properties" : {
+            "date" : {
+              "type" : "string",
+              "description" : "The announcement date"
+            },
+            "author" : {
+              "type" : "string",
+              "description" : "The announcement author"
+            },
+            "id" : {
+              "type" : "number",
+              "description" : "The announcement ID"
+            },
+            "title" : {
+              "type" : "string",
+              "description" : "The announcement title"
+            },
+            "content" : {
+              "type" : "string",
+              "description" : "The announcement content"
+            }
+          }
+        }
+      },
+      "announcement-detail-id-878993740" : {
+        "required" : [ "author", "content", "date", "id", "title" ],
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "string",
+            "description" : "The announcement date"
+          },
+          "author" : {
+            "type" : "string",
+            "description" : "The announcement author"
+          },
+          "id" : {
+            "type" : "number",
+            "description" : "The announcement ID"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "The announcement title"
+          },
+          "content" : {
+            "type" : "string",
+            "description" : "The announcement content"
+          }
+        }
+      }
+    }
+  }
+}
