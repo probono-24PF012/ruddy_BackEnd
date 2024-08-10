@@ -25,10 +25,11 @@ jobs:
         
         - name: Create .env file
           run: |
+            cd Chatbot_service/app
             echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
             echo "ALGORITHM=${{ secrets.ALGORITHM }}" >> .env
             echo "GPT_KEY=${{ secrets.GPT_KEY }}" >> .env
-            ls 
+             
         
         - name: Make openapi json
           run: |
