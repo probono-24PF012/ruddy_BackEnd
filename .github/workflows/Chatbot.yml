@@ -36,7 +36,7 @@ jobs:
             cd Chatbot_service/app
             uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
             sleep 5
-            curl http://localhost:8000/openapi.json > .../Swagger/docs/chatbot-service.json
+            curl http://localhost:8000/openapi.json > ../../Swagger/docs/chatbot-service.json
             pkill uvicorn
         
         - name: build And Copy file And Commit
