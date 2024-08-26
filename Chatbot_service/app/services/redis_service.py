@@ -4,7 +4,7 @@ import json
 
 class redis_func:
     def __init__(self):
-        self.redis_client = Redis(host='redis', port=6379,db=0)
+        self.redis_client = Redis(host='10.153.169.91', port=6379,db=0)
 
     def init_conversation(self, user_id, chat_uuid):
         key = f"user:{user_id}:chatroom:{chat_uuid}:conversations"
