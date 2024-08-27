@@ -3,7 +3,7 @@ import uuid
 import json
 class Mongodb_service:
     def __init__(self):
-        mongo = MongoClient(host='mongodb', port=27017)
+        mongo = MongoClient(host='34.47.74.227', port=27017)
         mongodb=mongo['local']
         self.mongodb_collection=mongodb['Test']
     

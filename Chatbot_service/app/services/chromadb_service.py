@@ -27,7 +27,7 @@ model="gpt-4o"
 
 class chromadb_func:
     def __init__(self):
-        chroma_client = chromadb.HttpClient(host='34.47.74.227', port=27017)
+        chroma_client = chromadb.HttpClient(host='20.41.115.19', port=8000)
         self.vectorDB = chroma_client.get_collection(name='test')
         self.redis_func=redis_func()
 
