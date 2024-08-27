@@ -21,7 +21,7 @@ def verify_token(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, base64.encode(SECRET_KEY), algorithms=[ALGORITHM])
+        payload = jwt.decode(token, base64.b64encode(SECRET_KEY), algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         print(username)
         if username is None:
