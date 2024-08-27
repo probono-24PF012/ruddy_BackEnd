@@ -48,7 +48,7 @@ def read_root():
                 "example": "오늘 강남구 개포동 아침 날씨는 맑고 기온은 29.4℃입니다. 강수확률은 0.0%이며, 남실바람이 불고 습도는 47.0%입니다."
             }
         }}})
-async def chat(username: Annotated[str , Depends(verify_token)], Item: Item_input):
+async def chat(username: Annotated[str , Depends(verify_token)], Item: Item_input, response_model=Item_answer):
     """
     # 요청 헤더: JWT 토큰 
     # 입력 파라미터
@@ -63,7 +63,7 @@ async def chat(username: Annotated[str , Depends(verify_token)], Item: Item_inpu
     answer=gpt.Rag_output(username, Item.chat_uuid, Item.question, Item.language)
     redis.add_conversation(username, Item.chat_uuid, Item.question, answer)
     mongodb_func.save_chat(username, Item.chat_uuid, Item.question, answer)
-    return answer
+    return Item_answer(answer=answer)
 
 @app.get("/chatbot/list", summary= "유저 채팅 기록 list 반환",        
         responses={
