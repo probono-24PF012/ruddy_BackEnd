@@ -38,7 +38,7 @@
                 },
                 "examples" : {
                   "members/sign-in" : {
-                    "value" : "{\"grantType\":\"Bearer\",\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjQ4MTA3MjZ9.7VoLrSoODQq3334csimwZQIuSPLT5vFFXzVbIFRwoxg\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjU1ODgzMjZ9.ee4UNw3YWUrfcON0o5CG1mwzrDrlQQBeFq8r36tyyCk\"}"
+                    "value" : "{\"grantType\":\"Bearer\",\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjQ4MTI5NDJ9.eMxk3CTEqVFN4odhP35P_h2OCMK7rsG4uzfROIRN9x4\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjU1OTA1NDJ9.OoUCnYuHgH4dp3XLvfmRdsgcPltJ6UGEuCu-aSNJ32Y\"}"
                   }
                 }
               }
