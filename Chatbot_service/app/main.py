@@ -11,11 +11,23 @@ from services.jwt_auth import verify_token
 import os
 import jwt
 import asyncio
-
+from fastapi.middleware.cors import CORSMiddleware
 
 mongodb_func=Mongodb_service()
     
 app=FastAPI()
+
+origins =[
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class Item_answer(BaseModel):
     answer: str

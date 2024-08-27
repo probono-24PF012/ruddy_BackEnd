@@ -6,4 +6,4 @@ pymongo
 chromadb==0.5.0
 openai
 pyjwt
-
+numpy<2.0.0
