@@ -1,6 +1,6 @@
 import os
 import jwt
-
+import base64
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import HTTPException, Depends, status
 from dotenv import load_dotenv
@@ -21,7 +21,7 @@ def verify_token(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, base64.encode(SECRET_KEY), algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         print(username)
         if username is None:
